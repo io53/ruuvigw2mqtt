@@ -27,7 +27,7 @@
     "mqtt_protocol": "list(tcp|tls|ws|mqtt)",
     "mqtt_address": "str",
     "mqtt_port": "int",
-    "mqttuser": {
+    "mqtt_credentials": {
       "clientId": "str",
       "username": "str",
       "password": "password"
