@@ -1,8 +1,8 @@
 {
-  "name": "RuuviTag into MQTT",
+  "name": "RuuviGW MQTT 2 HA Auto-Discovery",
+  "description": "Broadcast Ruuvi Gateway sensors from MQTT to HA auto-discovery",
   "version": "0.0.1",
-  "slug": "ruuvitag-mqtt",
-  "description": "Broadcast RuuviTag sensors into MQTT",
+  "slug": "ruuvigwmqtt2ha",
   "url": "https://gitlab.com/kirbo/addon-ruuvitag-mqtt/",
   "startup": "once",
   "boot": "auto",

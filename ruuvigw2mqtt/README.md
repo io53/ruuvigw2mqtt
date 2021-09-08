@@ -1,11 +1,11 @@
 # ruuvigw2mqtt
 
-Turn ruuvi gateway mqtt messages into home assistant format with autodiscovery.
+Turn Ruuvi Gateway MQTT messages into Home Assistant format with Auto-Discovery.
 
 
 ## Get it running
 
  - Clone the repo
- - `npm i`
+ - `yarn`
  - Edit the mqtt address (and username/password if needed)
-- `node app.js`
+- `yarn start`
