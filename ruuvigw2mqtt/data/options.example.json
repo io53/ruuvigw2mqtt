@@ -9,5 +9,5 @@
   },
   "mqtt_ha_topic": "homeassistant/",
   "mqtt_ruuvi_topic": "ruuvi/#",
-  "update_interval": 0
+  "update_interval": 60
 }
