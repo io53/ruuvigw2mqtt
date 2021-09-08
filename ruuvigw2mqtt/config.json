@@ -20,7 +20,7 @@
     },
     "mqtt_ha_topic": "homeassistant/",
     "mqtt_ruuvi_topic": "ruuvi/#",
-    "update_interval": 0
+    "update_interval": 60
   },
   "schema": {
     "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
@@ -28,7 +28,7 @@
     "mqtt_address": "str",
     "mqtt_port": "int",
     "mqtt_credentials": {
-      "clientId": "str",
+      "client_id": "str",
       "username": "str",
       "password": "password"
     },
