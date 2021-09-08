@@ -1,8 +1,10 @@
 {
+  "main": "index.js",
   "dependencies": {
-    "mqtt": "^4.2.8"
+    "mqtt": "4.2.8"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js data/options.json",
+    "start:supervisor": "node index.js"
   }
 }

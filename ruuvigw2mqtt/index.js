@@ -1,23 +1,23 @@
-const ruuviParser = require("./ruuvi/parser");
-const dc = require("./device_config");
 const mqtt = require("mqtt");
 
-const options = require("/data/options.json");
+const ruuviParser = require("./ruuvi/parser");
+const dc = require("./device_config");
+const options = require(process.argv[2] || "/data/options.json");
 
 const timeBetweenData = options.update_interval * 1000; // ms
 const lastSent = {};
 const mqttOpts = {
+  protocol: options.mqtt_protocol,
+  host: options.mqtt_host,
+  port: options.mqtt_port,
   clientId:
     options.mqtt_credentials.client_id ||
     "ruuvi-gw-mqtt-to-ha_" + Math.random().toString(16).substr(2, 8),
   username: options.mqtt_credentials.username,
-  username: options.mqtt_credentials.password,
+  password: options.mqtt_credentials.password,
 };
 
-const client = mqtt.connect(
-  `${options.mqtt_address}://${options.mqtt_address}:${options.mqtt_port}`,
-  mqttOpts
-);
+const client = mqtt.connect(mqttOpts);
 
 client.on("connect", () => {
   console.log("mqtt connected");
@@ -390,7 +390,8 @@ const updated = (id, type, data) => {
 const intToHex = (val) => ("00" + val.toString(16)).slice(-2);
 
 const hexToBytes = (hex) => {
-  for (const bytes = [], c = 0; c < hex.length; c += 2) {
+  const bytes = [];
+  for (let c = 0; c < hex.length; c += 2) {
     bytes.push(parseInt(hex.substr(c, 2), 16));
   }
 

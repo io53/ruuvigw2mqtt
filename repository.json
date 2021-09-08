@@ -1,4 +1,5 @@
 {
-  "name": "Ruuvi Gateway MQTT to HA Auto Discovery",
-  "url": "https://github.com/kirbo/ruuvigw-mqtt-to-ha-auto-discovery"
+  "name": "Ruuvi Friends",
+  "url": "https://github.com/kirbo/ruuvigw-mqtt-to-ha-auto-discovery",
+  "maintainer": "Kimmo Saari <kirbownz@me.com>"
 }
