@@ -1,0 +1,13 @@
+{
+  "mqtt_protocol": "mqtt",
+  "mqtt_address": "core-mosquitto",
+  "mqtt_port": 1884,
+  "mqtt_credentials": {
+    "client_id": "ruuvi-gw-mqtt-to-ha",
+    "username": "",
+    "password": ""
+  },
+  "mqtt_ha_topic": "homeassistant/",
+  "mqtt_ruuvi_topic": "ruuvi/#",
+  "update_interval": 0
+}
