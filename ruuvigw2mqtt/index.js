@@ -101,7 +101,7 @@ const handleData = (sr, mac) => {
       rssi: sr.rssi,
       humidity,
       temperature,
-      pressure,
+      pressure: pressure / 100,
       accelerationX,
       accelerationY,
       accelerationZ,
@@ -323,7 +323,7 @@ const handleDataFormat = (id, type) => {
 
 const handleBattery = (id, type) => {
   if (type === "RuuviTag") {
-    sendSensorConfig(id, "battery", dc.ruuvitag.batteryConfig(id));
+    sendSensorConfig(id, "battery", dc.ruuviTag.batteryConfig(id));
   } else if (type === "MJ_HT_V1") {
     sendSensorConfig(id, "battery", dc.miTemp.batteryConfig(id));
   } else if (type === "ACT_MI_TEMP") {
