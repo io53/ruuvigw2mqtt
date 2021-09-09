@@ -1,5 +1,5 @@
 const mqtt = require("mqtt");
-const parseData = require("ruuvitag-parser");
+const { parseData } = require("ruuvitag-parser");
 
 const dc = require("./device_config");
 const options = require(process.argv[2] || "/data/options.json");
