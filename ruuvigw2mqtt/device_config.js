@@ -124,6 +124,16 @@ module.exports = {
       device_class: "voltage",
       device: module.exports.ruuviTag.device(id),
     }),
+    batteryConfig: (id) => ({
+      ...module.exports.common(id, "battery", "%"),
+      device_class: "battery",
+      device: module.exports.ruuviTag.device(id),
+    }),
+    lowBatteryConfig: (id) => ({
+      ...module.exports.common(id, "low_battery"),
+      device_class: "battery",
+      device: module.exports.ruuviTag.device(id),
+    }),
     rssiConfig: (id) => ({
       ...module.exports.common(id, "rssi", "dBm"),
       device_class: "signal_strength",
@@ -159,7 +169,7 @@ module.exports = {
     }),
   },
   common: (id, type, unit_of_measurement) => ({
-    unit_of_measurement: unit_of_measurement,
+    ...(unit_of_measurement ? { unit_of_measurement } : {}),
     value_template: `{{ value_json.${type} }}`,
     state_topic: `homeassistant/ruuvigw_parsed/${id}`,
     json_attributes_topic: `homeassistant/ruuvigw_parsed/${id}`,

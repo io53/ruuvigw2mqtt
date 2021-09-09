@@ -53,7 +53,20 @@ const send = (id, payload) => {
   );
 };
 
-const sendConfig = (id, type, payload) => {
+const sendBinarySensorConfig = (id, type, payload) => {
+  console.log(
+    `${options.mqtt_ha_topic}binary_sensor/${id}/${type}/config`,
+    JSON.stringify(payload)
+  );
+
+  client.publish(
+    `${options.mqtt_ha_topic}binary_sensor/${id}/${type}/config`,
+    JSON.stringify(payload),
+    { retain: true }
+  );
+};
+
+const sendSensorConfig = (id, type, payload) => {
   console.log(
     `${options.mqtt_ha_topic}sensor/${id}/${type}/config`,
     JSON.stringify(payload)
@@ -92,7 +105,9 @@ const handleData = (sr, mac) => {
       accelerationX,
       accelerationY,
       accelerationZ,
-      voltage,
+      battery: (((voltage - 2200) / 1000) * 100).toFixed(2),
+      voltage: voltage / 1000,
+      low_battery: voltage < 2500 ? "on" : "off",
     };
 
     updated(mac, "RuuviTag", ruuvitag);
@@ -202,85 +217,97 @@ const things = {};
 
 const handleTempereture = (id, type) => {
   if (type === "MJ_HT_V1") {
-    sendConfig(id, "temperature", dc.miTemp.tempConfig(id));
+    sendSensorConfig(id, "temperature", dc.miTemp.tempConfig(id));
   } else if (type === "Flower care") {
-    sendConfig(id, "temperature", dc.miPlant.tempConfig(id));
+    sendSensorConfig(id, "temperature", dc.miPlant.tempConfig(id));
   } else if (type === "RuuviTag") {
-    sendConfig(id, "temperature", dc.ruuviTag.tempConfig(id));
+    sendSensorConfig(id, "temperature", dc.ruuviTag.tempConfig(id));
   } else if (type === "ACT_MI_TEMP") {
-    sendConfig(id, "temperature", dc.miTemp2.tempConfig(id));
+    sendSensorConfig(id, "temperature", dc.miTemp2.tempConfig(id));
   }
 };
 
 const handleRssi = (id, type) => {
   if (type === "MJ_HT_V1") {
-    sendConfig(id, "rssi", dc.miTemp.rssiConfig(id));
+    sendSensorConfig(id, "rssi", dc.miTemp.rssiConfig(id));
   } else if (type === "Flower care") {
-    sendConfig(id, "rssi", dc.miPlant.rssiConfig(id));
+    sendSensorConfig(id, "rssi", dc.miPlant.rssiConfig(id));
   } else if (type === "RuuviTag") {
-    sendConfig(id, "rssi", dc.ruuviTag.rssiConfig(id));
+    sendSensorConfig(id, "rssi", dc.ruuviTag.rssiConfig(id));
   } else if (type === "ACT_MI_TEMP") {
-    sendConfig(id, "rssi", dc.miTemp2.rssiConfig(id));
+    sendSensorConfig(id, "rssi", dc.miTemp2.rssiConfig(id));
   }
 };
 
 const handleHumidity = (id, type) => {
   if (type === "MJ_HT_V1") {
-    sendConfig(id, "humidity", dc.miTemp.humidityConfig(id));
+    sendSensorConfig(id, "humidity", dc.miTemp.humidityConfig(id));
   } else if (type === "RuuviTag") {
-    sendConfig(id, "humidity", dc.ruuviTag.humidityConfig(id));
+    sendSensorConfig(id, "humidity", dc.ruuviTag.humidityConfig(id));
   } else if (type === "ACT_MI_TEMP") {
-    sendConfig(id, "humidity", dc.miTemp2.humidityConfig(id));
+    sendSensorConfig(id, "humidity", dc.miTemp2.humidityConfig(id));
   }
 };
 
 const handleVoltage = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "voltage", dc.ruuviTag.voltageConfig(id));
+    sendSensorConfig(id, "voltage", dc.ruuviTag.voltageConfig(id));
   } else if (type === "ACT_MI_TEMP") {
-    sendConfig(id, "voltage", dc.miTemp2.voltageConfig(id));
+    sendSensorConfig(id, "voltage", dc.miTemp2.voltageConfig(id));
+  }
+};
+
+const handleLowBattery = (id, type) => {
+  if (type === "RuuviTag") {
+    sendBinarySensorConfig(id, "low_battery", dc.ruuviTag.lowBatteryConfig(id));
+  } else if (type === "ACT_MI_TEMP") {
+    sendBinarySensorConfig(id, "low_battery", dc.miTemp2.lowBatteryConfig(id));
   }
 };
 
 const handlePressure = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "pressure", dc.ruuviTag.pressureConfig(id));
+    sendSensorConfig(id, "pressure", dc.ruuviTag.pressureConfig(id));
   }
 };
 
 const handleTxPower = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "txPower", dc.ruuviTag.txPowerConfig(id));
+    sendSensorConfig(id, "txPower", dc.ruuviTag.txPowerConfig(id));
   }
 };
 
 const handleAccelerationX = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "accelerationX", dc.ruuviTag.accelerationXConfig(id));
+    sendSensorConfig(id, "accelerationX", dc.ruuviTag.accelerationXConfig(id));
   }
 };
 
 const handleAccelerationY = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "accelerationY", dc.ruuviTag.accelerationYConfig(id));
+    sendSensorConfig(id, "accelerationY", dc.ruuviTag.accelerationYConfig(id));
   }
 };
 
 const handleAccelerationZ = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "accelerationZ", dc.ruuviTag.accelerationZConfig(id));
+    sendSensorConfig(id, "accelerationZ", dc.ruuviTag.accelerationZConfig(id));
   }
 };
 
 const handleMovementCounter = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "movementCounter", dc.ruuviTag.movementCounterConfig(id));
+    sendSensorConfig(
+      id,
+      "movementCounter",
+      dc.ruuviTag.movementCounterConfig(id)
+    );
   }
 };
 
 const handleMeasurementSequenceNumber = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(
+    sendSensorConfig(
       id,
       "measurementSequenceNumber",
       dc.ruuviTag.measurementSequenceNumberConfig(id)
@@ -290,33 +317,35 @@ const handleMeasurementSequenceNumber = (id, type) => {
 
 const handleDataFormat = (id, type) => {
   if (type === "RuuviTag") {
-    sendConfig(id, "dataFormat", dc.ruuviTag.dataFormatConfig(id));
+    sendSensorConfig(id, "dataFormat", dc.ruuviTag.dataFormatConfig(id));
   }
 };
 
 const handleBattery = (id, type) => {
-  if (type === "MJ_HT_V1") {
-    sendConfig(id, "battery", dc.miTemp.batteryConfig(id));
+  if (type === "RuuviTag") {
+    sendSensorConfig(id, "battery", dc.ruuvitag.batteryConfig(id));
+  } else if (type === "MJ_HT_V1") {
+    sendSensorConfig(id, "battery", dc.miTemp.batteryConfig(id));
   } else if (type === "ACT_MI_TEMP") {
-    sendConfig(id, "battery", dc.miTemp2.batteryConfig(id));
+    sendSensorConfig(id, "battery", dc.miTemp2.batteryConfig(id));
   }
 };
 
 const handleLight = (id, type) => {
   if (type === "Flower care") {
-    sendConfig(id, "light", dc.miPlant.lightConfig(id));
+    sendSensorConfig(id, "light", dc.miPlant.lightConfig(id));
   }
 };
 
 const handleConductivity = (id, type) => {
   if (type === "Flower care") {
-    sendConfig(id, "conductivity", dc.miPlant.conductivityConfig(id));
+    sendSensorConfig(id, "conductivity", dc.miPlant.conductivityConfig(id));
   }
 };
 
 const handleMoisture = (id, type) => {
   if (type === "Flower care") {
-    sendConfig(id, "moisture", dc.miPlant.moistureConfig(id));
+    sendSensorConfig(id, "moisture", dc.miPlant.moistureConfig(id));
   }
 };
 
@@ -333,6 +362,9 @@ const updated = (id, type, data) => {
         break;
       case "humidity":
         handleHumidity(id, type);
+        break;
+      case "low_battery":
+        handleLowBattery(id, type);
         break;
       case "voltage":
         handleVoltage(id, type);
