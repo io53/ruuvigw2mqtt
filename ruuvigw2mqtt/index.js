@@ -79,6 +79,20 @@ const sendSensorConfig = (id, type, payload) => {
   );
 };
 
+const resolveBatteryPercentage = (min, max, current) => {
+  const range = max - min;
+  const percentage = ((current - min) / range) * 100;
+
+  switch (true) {
+    case percentage < 0:
+      return 0;
+    case percentage > 100:
+      return 100;
+    default:
+      return Number(percentage.toFixed(2));
+  }
+};
+
 const handleData = (sr, mac) => {
   mac = mac.split(":").join("");
 
@@ -105,7 +119,7 @@ const handleData = (sr, mac) => {
       accelerationX,
       accelerationY,
       accelerationZ,
-      battery: (((voltage - 2200) / 1000) * 100).toFixed(2),
+      battery: resolveBatteryPercentage(2000, 3400, voltage).toFixed(2),
       voltage: voltage / 1000,
       low_battery: voltage < 2500 ? "on" : "off",
     };
