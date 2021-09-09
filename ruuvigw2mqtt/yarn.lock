@@ -227,10 +227,10 @@ reinterval@^1.1.0:
   resolved "https://registry.yarnpkg.com/reinterval/-/reinterval-1.1.0.tgz#3361ecfa3ca6c18283380dd0bb9546f390f5ece7"
   integrity sha1-M2Hs+jymwYKDOA3Qu5VG85D17Oc=
 
-ruuvitag-parser@0.2.11:
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/ruuvitag-parser/-/ruuvitag-parser-0.2.11.tgz#f280e34c1ecafd9fac480d176a35de310578f2e8"
-  integrity sha512-wGhEFy7xdVhWNVSjp2bs2EB97pUaRF1b739LoNlkNNmLex9GYmtSHOLfLHQZ4qJJ2aItz5FaIwiIwgjSMGtOYA==
+ruuvitag-parser@0.2.12:
+  version "0.2.12"
+  resolved "https://registry.yarnpkg.com/ruuvitag-parser/-/ruuvitag-parser-0.2.12.tgz#448297615f1650fd69aabb4efb14e0d0b4bb287a"
+  integrity sha512-cx4ILS7ztOsJQs/eF8TjxS7R3uJfuZq6yQc/8wfYvMdXsEX6OgC+IHYfa0s1XiMOWuE51UZtnK4+RYzC9jaHQA==
   dependencies:
     "@types/node" "16.7.13"
 

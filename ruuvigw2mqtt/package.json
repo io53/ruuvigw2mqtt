@@ -2,7 +2,7 @@
   "main": "index.js",
   "dependencies": {
     "mqtt": "4.2.8",
-    "ruuvitag-parser": "0.2.11"
+    "ruuvitag-parser": "0.2.12"
   },
   "scripts": {
     "start": "node index.js data/options.json",
