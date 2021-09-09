@@ -1,6 +1,6 @@
 const mqtt = require("mqtt");
+const parseData = require("ruuvitag-parser");
 
-const ruuviParser = require("./ruuvi");
 const dc = require("./device_config");
 const options = require(process.argv[2] || "/data/options.json");
 
@@ -81,7 +81,7 @@ const handleData = (sr, mac) => {
       accelerationY,
       accelerationZ,
       battery: voltage,
-    } = ruuviParser(sr.data);
+    } = parseData(sr.data);
 
     const ruuvitag = {
       dataFormat,
