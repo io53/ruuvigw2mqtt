@@ -14,4 +14,6 @@ or follow the steps:
 6. Click "Close"
 7. Scroll at the end of the Add-on Store page and click the "Ruuvi Gateway MQTT to Auto Discovery"
 8. Click "Install"
-9. Click "Start"
+9. Update your configurations by clicking the "Configuration" up top
+10. Click "Save"
+11. Navigate back to "Info" and click "Start"
