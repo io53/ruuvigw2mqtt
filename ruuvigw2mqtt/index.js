@@ -1,6 +1,11 @@
 const mqtt = require("mqtt");
 const { parseData } = require("ruuvitag-parser");
 
+const {
+  BATTERY_LOW_LEVEL,
+  BATTERY_MINIMUM_VOLTAGE,
+  BATTERY_MAXIMUM_VOLTAGE,
+} = require("./contants");
 const dc = require("./device_config");
 const options = require(process.argv[2] || "/data/options.json");
 
@@ -119,9 +124,13 @@ const handleData = (sr, mac) => {
       accelerationX,
       accelerationY,
       accelerationZ,
-      battery: resolveBatteryPercentage(2000, 3400, voltage).toFixed(2),
+      battery: resolveBatteryPercentage(
+        BATTERY_MINIMUM_VOLTAGE,
+        BATTERY_MAXIMUM_VOLTAGE,
+        voltage
+      ).toFixed(2),
       voltage: voltage / 1000,
-      low_battery: voltage < 2500,
+      low_battery: voltage < BATTERY_LOW_LEVEL ? "ON" : "OFF",
     };
 
     updated(mac, "RuuviTag", ruuvitag);
