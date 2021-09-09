@@ -63,8 +63,7 @@ const sendConfig = (id, type, payload) => {
 const handleData = (sr, mac) => {
   mac = mac.split(":").join("");
 
-  // if (sr.data.indexOf("FF9904") !== -1) {
-  if (sr.data.startsWith("FF9904")) {
+  if (sr.data.indexOf("FF9904") !== -1) {
     // ruuvitag
     const adv = Buffer.from(sr.data.split("FF9904")[1], "hex");
     const dataFormat = adv[0];
@@ -77,8 +76,9 @@ const handleData = (sr, mac) => {
       accelerationZ,
       battery: voltage,
     } = ruuviParser(sr.data);
+
     const ruuvitag = {
-      dataFormat: dataFormat,
+      dataFormat,
       rssi: sr.rssi,
       humidity,
       temperature,
@@ -93,8 +93,7 @@ const handleData = (sr, mac) => {
     return;
   }
 
-  // if (sr.data.indexOf("02010603029") !== -1) {
-  if (sr.data.startsWith("02010603029")) {
+  if (sr.data.indexOf("02010603029") !== -1) {
     // mi flora
     const data = hexToBytes(sr.data);
     const dataType = data[23];
@@ -133,8 +132,7 @@ const handleData = (sr, mac) => {
     return;
   }
 
-  // if (sr.data.indexOf("10161A18A4C") !== -1) {
-  if (sr.data.startsWith("10161A18A4C")) {
+  if (sr.data.indexOf("10161A18A4C") !== -1) {
     // flashed ATC
     const data = hexToBytes(sr.data);
     const out = {};
@@ -149,8 +147,7 @@ const handleData = (sr, mac) => {
     return;
   }
 
-  // if (sr.data.indexOf("020106151695FE") !== -1) {
-  if (sr.data.startsWith("020106151695FE")) {
+  if (sr.data.indexOf("020106151695FE") !== -1) {
     // xiaomi round temperature & humidity sensor
     const data = hexToBytes(sr.data);
     const dataType = data[18];
