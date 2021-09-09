@@ -121,7 +121,7 @@ const handleData = (sr, mac) => {
       accelerationZ,
       battery: resolveBatteryPercentage(2000, 3400, voltage).toFixed(2),
       voltage: voltage / 1000,
-      low_battery: voltage < 2500 ? "on" : "off",
+      low_battery: voltage < 2500,
     };
 
     updated(mac, "RuuviTag", ruuvitag);
