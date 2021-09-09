@@ -1,6 +1,6 @@
 const mqtt = require("mqtt");
 
-const ruuviParser = require("./ruuvi/parser");
+const ruuviParser = require("./ruuvi");
 const dc = require("./device_config");
 const options = require(process.argv[2] || "/data/options.json");
 
@@ -43,8 +43,14 @@ client.on("message", (topic, message) => {
 });
 
 const send = (id, payload) => {
-  console.log(`${options.mqtt_ha_topic}${id}`, JSON.stringify(payload));
-  client.publish(`${options.mqtt_ha_topic}${id}`, JSON.stringify(payload));
+  console.log(
+    `${options.mqtt_ha_topic}ruuvigw_parsed/${id}`,
+    JSON.stringify(payload)
+  );
+  client.publish(
+    `${options.mqtt_ha_topic}ruuvigw_parsed/${id}`,
+    JSON.stringify(payload)
+  );
 };
 
 const sendConfig = (id, type, payload) => {

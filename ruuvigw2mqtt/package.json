@@ -1,7 +1,8 @@
 {
   "main": "index.js",
   "dependencies": {
-    "mqtt": "4.2.8"
+    "mqtt": "4.2.8",
+    "ruuvitag-parser": "0.2.6"
   },
   "scripts": {
     "start": "node index.js data/options.json",
