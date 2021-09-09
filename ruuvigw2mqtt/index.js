@@ -1,4 +1,5 @@
 const mqtt = require("mqtt");
+const express = require("express");
 const { parseData } = require("ruuvitag-parser");
 
 const {
@@ -21,6 +22,21 @@ const mqttOpts = {
   username: options.mqtt_credentials.username,
   password: options.mqtt_credentials.password,
 };
+
+const app = express();
+const port = 80;
+
+app
+  .get("/", (_, res) => {
+    res.send("OK");
+  })
+  .post("/", (_, res) => {
+    res.send("OK");
+  });
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 
 const client = mqtt.connect(mqttOpts);
 
