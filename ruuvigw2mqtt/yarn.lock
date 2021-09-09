@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/node@16.7.13":
+  version "16.7.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.13.tgz#86fae356b03b5a12f2506c6cf6cd9287b205973f"
+  integrity sha512-pLUPDn+YG3FYEt/pHI74HmnJOWzeR+tOIQzUx93pi9M7D8OE7PSLr97HboXwk5F+JS+TLtWuzCOW97AHjmOXXA==
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -221,6 +226,13 @@ reinterval@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/reinterval/-/reinterval-1.1.0.tgz#3361ecfa3ca6c18283380dd0bb9546f390f5ece7"
   integrity sha1-M2Hs+jymwYKDOA3Qu5VG85D17Oc=
+
+ruuvitag-parser@0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/ruuvitag-parser/-/ruuvitag-parser-0.2.7.tgz#cb7063572ff22821730b483733abc5d52ebbad84"
+  integrity sha512-3BYaBbrlabHLcHyUVkxttbJ0fqE4LoI175smCvYEmFbqIZdgGhYzMI9KkiIF8SeGmh/PSLU7i6ZhmsGmi/dgdQ==
+  dependencies:
+    "@types/node" "16.7.13"
 
 safe-buffer@~5.2.0:
   version "5.2.1"
