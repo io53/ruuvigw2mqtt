@@ -1,5 +1,4 @@
 const mqtt = require("mqtt");
-const express = require("express");
 const { parseData } = require("ruuvitag-parser");
 
 const {
@@ -22,21 +21,6 @@ const mqttOpts = {
   username: options.mqtt_credentials.username,
   password: options.mqtt_credentials.password,
 };
-
-const app = express();
-const port = 80;
-
-app
-  .get("/", (_, res) => {
-    res.send("OK");
-  })
-  .post("/", (_, res) => {
-    res.send("OK");
-  });
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
 
 const client = mqtt.connect(mqttOpts);
 
@@ -134,9 +118,9 @@ const handleData = (sr, mac) => {
     const ruuvitag = {
       dataFormat,
       rssi: sr.rssi,
-      humidity,
-      temperature,
-      pressure: pressure / 100,
+      humidity: Number(humidity.toFixed(2)),
+      temperature: Number(temperature.toFixed(2)),
+      pressure: Number((pressure / 100).toFixed(2)),
       accelerationX,
       accelerationY,
       accelerationZ,

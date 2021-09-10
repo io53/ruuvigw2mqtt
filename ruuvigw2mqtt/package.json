@@ -1,7 +1,6 @@
 {
   "main": "index.js",
   "dependencies": {
-    "express": "4.17.1",
     "mqtt": "4.2.8",
     "ruuvitag-parser": "0.2.13"
   },

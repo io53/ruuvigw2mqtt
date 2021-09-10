@@ -1,3 +1,4 @@
-**v1.2.0** (2021-09-09)
+**v1.3.0** (2021-09-10)
 
-Adds WatchDog feature
+- RuuviTag `temperature`, `humidity` and `pressure` now with 2 decimals max.
+- Removed unnecessary `express`.
