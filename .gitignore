@@ -116,3 +116,4 @@ dist
 .pnp.*
 ruuvigw2mqtt/options.json
 ruuvigw2mqtt/data/options.json
+.DS_Store
