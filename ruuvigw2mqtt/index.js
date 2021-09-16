@@ -44,11 +44,11 @@ client.on("message", (topic, message) => {
 
 const send = (id, payload) => {
   console.log(
-    `${options.mqtt_ha_topic}ruuvigw_parsed/${id}`,
+    `${options.mqtt_parsed_ruuvi_topic || "ruuvi/parsed/"}${id}`,
     JSON.stringify(payload)
   );
   client.publish(
-    `${options.mqtt_ha_topic}ruuvigw_parsed/${id}`,
+    `${options.mqtt_parsed_ruuvi_topic || "ruuvi/parsed/"}${id}`,
     JSON.stringify(payload)
   );
 };

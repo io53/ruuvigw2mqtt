@@ -1,3 +1,5 @@
+const options = require(process.argv[2] || "/data/options.json");
+
 module.exports = {
   miTemp: {
     device: (id) => ({
@@ -171,8 +173,10 @@ module.exports = {
   common: (id, type, unit_of_measurement) => ({
     ...(unit_of_measurement ? { unit_of_measurement } : {}),
     value_template: `{{ value_json.${type} }}`,
-    state_topic: `homeassistant/ruuvigw_parsed/${id}`,
-    json_attributes_topic: `homeassistant/ruuvigw_parsed/${id}`,
+    state_topic: `${options.mqtt_parsed_ruuvi_topic || "ruuvi/parsed/"}${id}`,
+    json_attributes_topic: `${
+      options.mqtt_parsed_ruuvi_topic || "ruuvi/parsed/"
+    }${id}`,
     name: `${id}_${type}`,
     unique_id: `${id}_${type}_homeassistant`,
   }),

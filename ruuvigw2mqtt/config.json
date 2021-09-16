@@ -1,7 +1,7 @@
 {
   "name": "RuuviGW MQTT 2 HA",
   "description": "Broadcast Ruuvi Gateway MQTT messages to HA Auto Discovery",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "slug": "ruuvigwmqtt2ha",
   "url": "https://github.com/kirbo/ruuvigw-mqtt-to-ha-auto-discovery/",
   "startup": "application",
@@ -20,6 +20,7 @@
     },
     "mqtt_ha_topic": "homeassistant/",
     "mqtt_ruuvi_topic": "ruuvi/#",
+    "mqtt_parsed_ruuvi_topic": "ruuvi/parsed/",
     "update_interval": 60,
     "decimals": {
       "humidity": 2,
@@ -46,6 +47,7 @@
     },
     "mqtt_ha_topic": "str",
     "mqtt_ruuvi_topic": "str",
+    "mqtt_parsed_ruuvi_topic": "str",
     "update_interval": "int(60,3600)",
     "decimals": {
       "humidity": "int(0,4)",
