@@ -1,4 +1,3 @@
-**v1.3.1** (2021-09-10)
+**v1.3.2** (2021-09-16)
 
-- Updated `ruuvitag-parser` to latest version
-- RuuviTag `temperature`, `humidity` and `pressure` now with 2 decimals max.
+- Improved battery percentage calculation.

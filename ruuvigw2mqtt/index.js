@@ -128,8 +128,8 @@ const handleData = (sr, mac) => {
         BATTERY_MINIMUM_VOLTAGE,
         BATTERY_MAXIMUM_VOLTAGE,
         voltage
-      ).toFixed(2),
-      voltage: voltage / 1000,
+      ).toFixed(0),
+      voltage: (voltage / 1000).toFixed(2),
       low_battery: voltage < BATTERY_LOW_LEVEL ? "ON" : "OFF",
     };
 
