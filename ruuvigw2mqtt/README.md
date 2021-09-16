@@ -87,3 +87,10 @@ battery:
   maximum: 3000
   low_battery: 2100
 ```
+
+## How to use
+
+Once you have installed, configured and launched this add-on, you'll find the RuuviTags and Xiaomi sensors on your [Devices page](https://my.home-assistant.io/redirect/devices/),
+by searching for `RuuviTag_` or `Xiaomi_`.
+
+

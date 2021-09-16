@@ -4,7 +4,7 @@ module.exports = {
   miTemp: {
     device: (id) => ({
       identifiers: [`ruuvigw2mqtt_${id}`],
-      name: id,
+      name: `Xiaomi_MiTemp_${id}`,
       sw_version: "ruuvigw2mqtt",
       model: "Mi Temperature and Humidity Monitor",
       manufacturer: "Xiaomi",
@@ -33,7 +33,7 @@ module.exports = {
   miTemp2: {
     device: (id) => ({
       identifiers: [`ruuvigw2mqtt_${id}`],
-      name: id,
+      name: `Xiaomi_MiTemp2_${id}`,
       sw_version: "ruuvigw2mqtt",
       model: "Mi Temperature and Humidity Monitor 2",
       manufacturer: "Xiaomi",
@@ -67,7 +67,7 @@ module.exports = {
   miPlant: {
     device: (id) => ({
       identifiers: [`ruuvigw2mqtt_${id}`],
-      name: id,
+      name: `Xiaomi_MiPlant_${id}`,
       sw_version: "ruuvigw2mqtt",
       model: "Mi Flora",
       manufacturer: "Xiaomi",
@@ -101,7 +101,7 @@ module.exports = {
   ruuviTag: {
     device: (id) => ({
       identifiers: [`ruuvigw2mqtt_${id}`],
-      name: `Ruuvi_${id[8]}${id[9]}${id[10]}${id[11]}`,
+      name: `RuuviTag_${id[8]}${id[9]}${id[10]}${id[11]}`,
       sw_version: "ruuvigw2mqtt",
       model: "RuuviTag",
       manufacturer: "Ruuvi Innovations",
