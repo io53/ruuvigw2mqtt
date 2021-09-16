@@ -3,7 +3,7 @@
   "description": "Broadcast Ruuvi Gateway MQTT messages to HA Auto Discovery",
   "version": "1.4.1",
   "slug": "ruuvigwmqtt2ha",
-  "url": "https://github.com/kirbo/ruuvigw-mqtt-to-ha-auto-discovery/",
+  "url": "https://github.com/kirbo/ha-ruuvi-addons-repository/",
   "startup": "application",
   "boot": "auto",
   "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],

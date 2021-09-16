@@ -21,7 +21,7 @@ LABEL \
     org.label-schema.description="Broadcast Ruuvi Gateway MQTT messages to HA Auto Discovery" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.schema-version="1.0" \
-    org.label-schema.usage="https://github.com/kirbo/ruuvigw-mqtt-to-ha-auto-discovery/-/blob/master/README.md" \
+    org.label-schema.usage="https://github.com/kirbo/ha-ruuvi-addons-repository/-/blob/master/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/kirbo/ruuvigw-mqtt-to-ha-auto-discovery" \
+    org.label-schema.vcs-url="https://github.com/kirbo/ha-ruuvi-addons-repository" \
     org.label-schema.vendor="HomeAssistant add-ons by Kimmo Saari"
