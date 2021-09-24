@@ -1,0 +1,11 @@
+{
+  "main": "index.js",
+  "dependencies": {
+    "mqtt": "4.2.8",
+    "ruuvitag-parser": "1.0.1"
+  },
+  "scripts": {
+    "start": "node index.js data/options.json",
+    "start:supervisor": "node index.js"
+  }
+}

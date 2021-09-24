@@ -1,0 +1,65 @@
+{
+  "name": "RuuviGW MQTT 2 HA",
+  "description": "Broadcast Ruuvi Gateway MQTT messages to HA Auto Discovery",
+  "version": "1.4.3",
+  "slug": "ruuvigwmqtt2ha",
+  "url": "https://github.com/kirbo/ha-addons-repository/",
+  "startup": "application",
+  "boot": "auto",
+  "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
+  "map": [],
+  "services": ["mqtt:want"],
+  "options": {
+    "mqtt_protocol": "mqtt",
+    "mqtt_host": "core-mosquitto",
+    "mqtt_port": 1884,
+    "mqtt_credentials": {
+      "client_id": "ruuvi-gw-mqtt-to-ha",
+      "username": "",
+      "password": ""
+    },
+    "mqtt_ha_topic": "homeassistant/",
+    "mqtt_ruuvi_topic": "ruuvi/#",
+    "mqtt_parsed_ruuvi_topic": "ruuvi/parsed/",
+    "update_interval": 60,
+    "decimals": {
+      "humidity": 2,
+      "temperature": 2,
+      "pressure": 2,
+      "battery": 0,
+      "voltage": 2
+    },
+    "battery": {
+      "minimum": 2000,
+      "maximum": 3000,
+      "low_battery": 2100
+    }
+  },
+  "schema": {
+    "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
+    "mqtt_protocol": "list(tcp|tls|ws|mqtt)",
+    "mqtt_host": "str",
+    "mqtt_port": "int",
+    "mqtt_credentials": {
+      "client_id": "str",
+      "username": "str",
+      "password": "password"
+    },
+    "mqtt_ha_topic": "str",
+    "mqtt_ruuvi_topic": "str",
+    "mqtt_parsed_ruuvi_topic": "str",
+    "update_interval": "int(60,3600)",
+    "decimals": {
+      "humidity": "int(0,4)",
+      "temperature": "int(0,4)",
+      "pressure": "int(0,4)",
+      "battery": "int(0,4)",
+      "voltage": "int(0,4)"
+    },
+    "battery": {
+      "minimum": "int(1800,2000)",
+      "maximum": "int(3000,3400)",
+      "low_battery": "int(2000,2500)"
+    }
+  }
+}

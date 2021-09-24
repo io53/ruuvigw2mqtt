@@ -1,0 +1,26 @@
+{
+  "mqtt_protocol": "mqtt",
+  "mqtt_host": "core-mosquitto",
+  "mqtt_port": 1883,
+  "mqtt_credentials": {
+    "client_id": "ruuvi-gw-mqtt-to-ha",
+    "username": "",
+    "password": ""
+  },
+  "mqtt_ha_topic": "homeassistant/",
+  "mqtt_ruuvi_topic": "ruuvi/#",
+  "mqtt_parsed_ruuvi_topic": "ruuvi/parsed/",
+  "update_interval": 60,
+  "decimals": {
+    "humidity": 2,
+    "temperature": 2,
+    "pressure": 2,
+    "battery": 0,
+    "voltage": 2
+  },
+  "battery": {
+    "minimum": 2000,
+    "maximum": 3000,
+    "low_battery": 2100
+  }
+}
